@@ -24,6 +24,8 @@ RUN apt-get update && apt-get install -y \
     xorg-dev \
     libxmu-dev \
     libperl4-corelibs-perl \
+    python3 \
+    python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp
@@ -44,6 +46,9 @@ RUN sed -i '137s/erase(/this->erase(/' /tmp/ns-allinone-2.35/ns-2.35/linkstate/l
 
 # Install NS-2
 RUN cd ns-allinone-2.35 && ./install
+
+# Install Python dependencies
+RUN pip3 install -r /code/requirements.txt
 
 # Set up environment
 ENV PATH="/tmp/ns-allinone-2.35/bin:/tmp/ns-allinone-2.35/tcl8.5.10/unix:/tmp/ns-allinone-2.35/tk8.5.10/unix:$PATH"
