@@ -47,6 +47,10 @@ RUN sed -i '137s/erase(/this->erase(/' /tmp/ns-allinone-2.35/ns-2.35/linkstate/l
 # Install NS-2
 RUN cd ns-allinone-2.35 && ./install
 
+# Copy requirements file
+COPY requirements.txt /code/
+
+
 # Install Python dependencies
 RUN pip3 install -r /code/requirements.txt
 
