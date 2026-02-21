@@ -24,13 +24,6 @@ class ScenarioName(Enum):
     HIGH_CONGESTION = "high_congestion"
     CONGESTION_AVOIDANCE = "congestion_avoidance"
 
-
-SCENARIOS = {
-    ScenarioName.NORMAL_TRAFFIC: normal_traffic,
-    ScenarioName.HIGH_CONGESTION: high_congestion,
-    ScenarioName.CONGESTION_AVOIDANCE: congestion_avoidance,
-}
-
 def normal_traffic() -> TrafficConfig:
     return TrafficConfig(
         senders_per_wave=32,
@@ -73,14 +66,12 @@ def congestion_avoidance() -> TrafficConfig:
     )
 
 
-def get_scenario(name: ScenarioName | str) -> TrafficConfig:
-    if isinstance(name, str):
-        try:
-            scenario_name = ScenarioName(name)
-        except ValueError as exc:
-            allowed = ", ".join(item.value for item in ScenarioName)
-            raise ValueError(f"Unknown scenario '{name}'. Expected one of: {allowed}") from exc
-    else:
-        scenario_name = name
+SCENARIOS = {
+    ScenarioName.NORMAL_TRAFFIC: normal_traffic,
+    ScenarioName.HIGH_CONGESTION: high_congestion,
+    ScenarioName.CONGESTION_AVOIDANCE: congestion_avoidance,
+}
 
-    return SCENARIOS[scenario_name]()
+
+def get_scenario(name: ScenarioName) -> TrafficConfig:
+    return SCENARIOS[name]()
