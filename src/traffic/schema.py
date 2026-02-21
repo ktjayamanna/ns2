@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import List
 
 from .models.classifier import TrafficClass
 
@@ -16,4 +17,4 @@ class TrafficEvent:
     priority_tag: int
 
 
-TrafficEvents = list[TrafficEvent]
+TrafficEvents = List[TrafficEvent]
