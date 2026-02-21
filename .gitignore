@@ -2,3 +2,6 @@
 *.png
 *.nam
 data
+
+# docs to ignore
+src/docs/oneoffs
