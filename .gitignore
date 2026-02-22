@@ -9,3 +9,9 @@ src/docs/oneoffs
 __pycache__
 *.py[cod]
 *$py.class
+
+#notebooks
+src/traffic/validate.ipynb
+
+#setup
+src/traffic_sim.egg-info
