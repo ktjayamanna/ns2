@@ -15,3 +15,9 @@ src/traffic/validate.ipynb
 
 #setup
 src/traffic_sim.egg-info
+# ignore and .egg-info files
+*.egg-info
+*.egg
+
+# any of the "other" files
+*other
