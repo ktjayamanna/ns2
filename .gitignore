@@ -21,3 +21,9 @@ src/traffic_sim.egg-info
 
 # any of the "other" files
 *other
+
+#vscode settings
+.vscode
+
+#env files
+.env
