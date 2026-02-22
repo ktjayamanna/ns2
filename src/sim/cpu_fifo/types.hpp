@@ -1,6 +1,6 @@
-#pragma once
+#pragma once // Prevents multiple inclusions of the same header file. Modern version of #ifndef/#define/#endif
 
-#include <cstdint>
+#include <cstdint> // fixed-width integer types with guaranteed sizes.
 #include <vector>
 
 namespace sim::cpu_fifo
