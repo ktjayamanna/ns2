@@ -1,6 +1,11 @@
 set ns [new Simulator]
+
 set tf [open udp.tr w]
 $ns trace-all $tf
+
+# Add nam trace generation
+set nf [open lab3.nam w]
+$ns namtrace-all $nf
 
 # Create 6 nodes
 for {set i 0} {$i < 6} {incr i} {
@@ -37,7 +42,6 @@ proc setup_cbr {src dst size rate fid} {
 }
 
 # 3 Source nodes: n0, n1, n2 with requested packet sizes and rates
-# Flow ID (fid) is set to 16, 32, and 512 to identify packets easily
 set cbr0 [setup_cbr $n(0) $null0 16 80Kbps 16]
 set cbr1 [setup_cbr $n(1) $null0 32 320Kbps 32]
 set cbr2 [setup_cbr $n(2) $null0 512 800Kbps 512]
@@ -54,9 +58,10 @@ $ns at 10.0 "$cbr2 stop"
 $ns at 10.1 "finish"
 
 proc finish {} {
-    global ns tf
+    global ns tf nf
     $ns flush-trace
     close $tf
+    close $nf
     exit 0
 }
 
